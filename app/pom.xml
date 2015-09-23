@@ -1,0 +1,80 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.company.appname</groupId>
+    <artifactId>app</artifactId>
+    <version>1.0.0</version>
+    <packaging>apk</packaging>
+
+    <properties>
+        <support-v4.version>23.0.1</support-v4.version>
+        <support-v13.version>23.0.1</support-v13.version>
+        <android.version>4.1.1.4</android.version>
+        <android-platform>21</android-platform>
+        <android-maven-plugin.version>4.3.0</android-maven-plugin.version>
+        <maven-compiler-plugin-version>3.1</maven-compiler-plugin-version>
+        <java-version>1.7</java-version>
+    </properties>
+
+    <!--        Very useful method for importing support libraries - you need to have ANDROID_HOME env var pointing to sdk-->
+    <repositories>
+        <repository>
+            <id>android-support</id>
+            <url>file://${env.ANDROID_HOME}/extras/android/m2repository</url>
+        </repository>
+    </repositories>
+
+    <!--Support dependencies comes from local repository defined above-->
+    <dependencies>
+        <dependency>
+            <groupId>com.android.support</groupId>
+            <artifactId>support-v13</artifactId>
+            <version>${support-v13.version}</version>
+            <type>aar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.android.support</groupId>
+            <artifactId>cardview-v7</artifactId>
+            <version>23.0.1</version>
+            <type>aar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.android.support</groupId>
+            <artifactId>recyclerview-v7</artifactId>
+            <version>23.0.1</version>
+            <type>aar</type>
+        </dependency>
+    </dependencies>
+
+    <!--    Android maven plugin-->
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.simpligility.maven.plugins</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <version>${android-maven-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <sdk>
+                        <platform>${android-platform}</platform>
+                    </sdk>
+                </configuration>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin-version}</version>
+                <configuration>
+                    <source>${java-version}</source>
+                    <target>${java-version}</target>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

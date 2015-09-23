@@ -1,0 +1,65 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.company.appname</groupId>
+	<artifactId>app</artifactId>
+	<version>1.0.0</version>
+	<packaging>apk</packaging>
+	
+	<parent>
+		<groupId>com.company.appname</groupId>
+		<artifactId>appname-parent</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	
+	<!--        Very useful method for importing support libraries - you need to have ANDROID_HOME env var pointing to sdk-->
+	<repositories>
+		<repository>
+			<id>android-support</id>
+			<url>file://${env.ANDROID_HOME}/extras/android/m2repository</url>
+		</repository>
+	</repositories>
+	
+	<!--Support dependencies comes from local repository defined above-->
+	<dependencies>
+		<dependency>
+			<groupId>com.company.appname</groupId>
+			<artifactId>view-pager-indicator</artifactId>
+			<version>1.0.0</version>
+			<type>aar</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.android.support</groupId>
+			<artifactId>support-v13</artifactId>
+			<version>${support-v13.version}</version>
+			<type>aar</type>
+		</dependency>
+		<dependency>
+			<groupId>com.android.support</groupId>
+			<artifactId>cardview-v7</artifactId>
+			<version>23.0.1</version>
+			<type>aar</type>
+		</dependency>
+		<dependency>
+			<groupId>com.android.support</groupId>
+			<artifactId>recyclerview-v7</artifactId>
+			<version>23.0.1</version>
+			<type>aar</type>
+		</dependency>
+	</dependencies>
+	
+	<!--    Android maven plugin-->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.simpligility.maven.plugins</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>
